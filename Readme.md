@@ -19,3 +19,4 @@
 
 💭 **Em Breve:**
 <p>Possibilidade de implementação e utilização da API ao lado do cliente (Front-End)</p>
+<p>Correção das políticas de CORS (Cross-origin resource sharing)</p>
