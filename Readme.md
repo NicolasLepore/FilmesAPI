@@ -4,6 +4,8 @@
 
 💻 **Tecnologias Utilizadas:**
 <ul>
+<li>C#</li>
+<li>.NET 6.0</li>
 <li>ASP NET Core MVC</li>
 <li>Entity Framework</li>
 <li>MySQL</li>
