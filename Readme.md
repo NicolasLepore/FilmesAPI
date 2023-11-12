@@ -12,8 +12,8 @@
 </ul>
 
 ❓ **Como Utilizar:**
-<p><strong>-></strong>Baixe a aplicação e execute em sua IDE,</p>
-<p><strong>-></strong>Utilize o Swagger para a utilização dos métodos HTTP ou um software a sua escolha</p>
+<p><strong>-></strong> Baixe a aplicação e execute em sua IDE,</p>
+<p><strong>-></strong> Utilize o Swagger para a utilização dos métodos HTTP ou um software a sua escolha</p>
 
 💭 **Em Breve:**
 <p>Possibilidade de implementação e utilização da API ao lado do cliente (Front-End)</p>
