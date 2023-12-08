@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Numerics;
 
-namespace FilmesAPI.Data.Dtos;
+namespace FilmesAPI.Data.Dtos.FilmesDtos;
 
 #nullable disable
-public class UpdateFilmeDtos
+public class CreateFilmeDtos
 {
     // Classe Intermediaria dos dados
 
@@ -18,4 +17,5 @@ public class UpdateFilmeDtos
 
     [Range(70, 600, ErrorMessage = "A duração do filme deve ser de 70 à 600 minutos")]
     public int Duration { get; set; }
+
 }

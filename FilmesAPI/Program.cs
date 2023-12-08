@@ -9,9 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
 
 builder.Services.AddDbContext<FilmeContext>(opts => 
-    opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    opts.UseLazyLoadingProxies().UseMySql
+        (connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddCors();
 
 // Add services to the container.
 
@@ -35,6 +38,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(opt =>
+{
+    opt.AllowAnyHeader();
+    opt.AllowAnyOrigin();
+    opt.AllowAnyMethod();
+});
 
 app.UseHttpsRedirection();
 

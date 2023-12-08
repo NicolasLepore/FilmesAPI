@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FilmesAPI.Models;
 using FilmesAPI.Data;
-using FilmesAPI.Data.Dtos;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
+using FilmesAPI.Data.Dtos.FilmesDtos;
 
 namespace FilmesAPI.Controllers;
+#pragma warning disable 1591
 
 [ApiController]
 [Route("[controller]")]
@@ -38,21 +39,31 @@ public class FilmeController : ControllerBase
         _dbContext.Filmes.Add(filme);
         _dbContext.SaveChanges();
         return CreatedAtAction
-            (nameof(GetFilmeID), new { id = filme.ID }, filme); //201
+            (nameof(GetFilmeID), new { id = filme.Id }, filme); //201
     }
 
     [HttpGet]
-    public IEnumerable<ReadFilmeDtos> GetFilme([FromQuery]int skip = 0, 
-        [FromQuery]int take = 20)
+    public IEnumerable<ReadFilmeDtos> GetFilme([FromQuery] int skip = 0,
+        [FromQuery] int take = 20,
+        [FromQuery] string? cinema = null)
     {
-        return _mapper.Map<List<ReadFilmeDtos>>
-            (_dbContext.Filmes.Skip(skip).Take(take));
+        if(cinema == null)
+        {
+            return _mapper.Map<List<ReadFilmeDtos>>
+            (_dbContext.Filmes.Skip(skip).Take(take).ToList());
+        }
+
+        return _mapper.Map<List<ReadFilmeDtos>>(_dbContext.Filmes
+            .Skip(skip).Take(take)
+            .Where(filme => filme.Sessoes.Any(sessao => sessao.Cinema.Nome == cinema))
+            .ToList());
+        
     }
 
     [HttpGet("{id}")]
     public IActionResult GetFilmeID(int id)
     {
-        var filme = _dbContext.Filmes.FirstOrDefault(filme => filme.ID == id);
+        var filme = _dbContext.Filmes.FirstOrDefault(filme => filme.Id == id);
         if (filme == null) return NotFound(); //404
         var filmeDto = _mapper.Map<ReadFilmeDtos>(filme);
         return Ok(filmeDto); //200
@@ -62,7 +73,7 @@ public class FilmeController : ControllerBase
     public IActionResult UpdateFilme(int id,[FromBody]UpdateFilmeDtos filmeDto)
     {
         var filme = _dbContext.Filmes.FirstOrDefault(filme => 
-        filme.ID == id);
+        filme.Id == id);
         if(filme == null) return NotFound();
         else
         {
@@ -77,7 +88,7 @@ public class FilmeController : ControllerBase
         [FromBody]JsonPatchDocument<UpdateFilmeDtos>patch)
     {
         var filme = _dbContext.Filmes.FirstOrDefault(f => 
-        f.ID == id);
+        f.Id == id);
         if(filme == null) return NotFound();
 
         var filmeDto = _mapper.Map<UpdateFilmeDtos>(filme);
@@ -94,7 +105,7 @@ public class FilmeController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeletarFilmes(int id)
     {
-        var filme = _dbContext.Filmes.FirstOrDefault(f => f.ID == id);
+        var filme = _dbContext.Filmes.FirstOrDefault(f => f.Id == id);
         if(filme == null) return NotFound();
         _dbContext.Remove(filme);
         _dbContext.SaveChanges();

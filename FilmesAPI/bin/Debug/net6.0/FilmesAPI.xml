@@ -4,7 +4,7 @@
         <name>FilmesAPI</name>
     </assembly>
     <members>
-        <member name="M:FilmesAPI.Controllers.FilmeController.AddFilme(FilmesAPI.Data.Dtos.CreateFilmeDtos)">
+        <member name="M:FilmesAPI.Controllers.FilmeController.AddFilme(FilmesAPI.Data.Dtos.FilmesDtos.CreateFilmeDtos)">
             <summary>
             Adiciona um filme ao banco de dados
             </summary>
@@ -14,16 +14,28 @@
             <returns>IActionResult</returns>
             <response code="201">Caso inserção seja feita com sucesso</response>
         </member>
-        <member name="T:FilmesAPI.Migrations.FilmeTableSQL">
+        <member name="T:FilmesAPI.Migrations.Relationship">
             <inheritdoc />
         </member>
-        <member name="M:FilmesAPI.Migrations.FilmeTableSQL.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:FilmesAPI.Migrations.Relationship.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:FilmesAPI.Migrations.FilmeTableSQL.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:FilmesAPI.Migrations.Relationship.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:FilmesAPI.Migrations.FilmeTableSQL.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:FilmesAPI.Migrations.Relationship.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:FilmesAPI.Migrations.EnderecoRestrictDeletion">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmesAPI.Migrations.EnderecoRestrictDeletion.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmesAPI.Migrations.EnderecoRestrictDeletion.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:FilmesAPI.Migrations.EnderecoRestrictDeletion.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>
