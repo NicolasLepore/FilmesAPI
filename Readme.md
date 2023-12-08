@@ -1,6 +1,7 @@
 # FilmesAPI
 
 ⭐ **API REST de filmes utilizando CRUD Completo através dos métodos HTTP (Post, Get, Put, Patch, Delete).**
+<br/>
 ⭐ **Relação completa entre entidades (1:1, 1:n e n:n)**
 
 💻 **Tecnologias Utilizadas:**
